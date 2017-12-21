@@ -1,5 +1,6 @@
 {
     "name": "manager/menu-manager",
+    "name": "manager/menu-manager",
     "authors": [
         {
             "name": "ninhhoang",
@@ -7,7 +8,24 @@
         }
     ],
     "require": {},
+    "homepage": "https://github.com/lavary/laravel-menu",
     "psr-4": {
             "Manager\\MenuManager\\" : "src/"
+        },
+    "autoload": {
+        "psr-0": {
+            "Lavary\\Menu\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Manager\\MenuManager\\MenuManagerServiceProvider"
+            ],
+            "aliases": {
+                "Menu": "Manager\\MenuManager\\Facade"
+            }
+        }
+    },
+    "minimum-stability": "dev"
 }
