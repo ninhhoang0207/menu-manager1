@@ -65,9 +65,9 @@
 		$('#modal-delete').modal('show');
 	}
 
-	$('#link-delete').on('click', function() {
+	$('#link-delete').on('click', function(e) {
+		e.preventDefault();
 		var url = $(this).attr('href');
-
 		$.ajax({
 			url : url,
 			type : 'POST'
@@ -77,7 +77,7 @@
 			} else {
 				toastr.error('Remove item error');
 			}
-
+			$('#modal-delete').modal('hide');
 			window.location.reload();
 		});
 	});
