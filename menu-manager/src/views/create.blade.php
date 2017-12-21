@@ -36,7 +36,7 @@
 						<div class="form-group">
 							<div class="col-md-3 col-sm-3 col-xs-12"></div>
 							<div class="col-md-6 col-sm-6 col-xs-12 text-center">
-								<button type="reset" class="btn btn-default">Reset</button>
+								<a href="{{ route('menu_manager') }}" class="btn btn-default pull-right">Back</a>
 								<button class="btn btn-primary" type="submit">Create</button>
 							</div>
 						</div>

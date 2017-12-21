@@ -57,6 +57,7 @@ p { margin-top:0; font-size:0.97em; }
 				<!-- X-title -->
 				<div class="x_title">
 					<h2>{{ $menu->name }}</h2>
+					<a href="{{ route('menu_manager') }}" class="btn btn-default pull-right">Back</a>
 					<button class="btn btn-primary pull-right" data-toggle="modal" data-target="#modal-create">Create</button>
 					<div class="clearfix"></div>
 				</div>
