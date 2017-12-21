@@ -37,6 +37,8 @@ class MenuManagerController extends Controller {
             
         }
 
+        Session::flash('success', 'Create new item successful');
+
         return Redirect::route('menu_manager');
     }
 

@@ -78,7 +78,7 @@
 				toastr.error('Remove item error');
 			}
 			$('#modal-delete').modal('hide');
-			window.location.reload();
+			location.reload();
 		});
 	});
 </script>
