@@ -1,0 +1,13 @@
+{
+    "name": "manager/menu-manager",
+    "authors": [
+        {
+            "name": "ninhhoang",
+            "email": "ninhvanhoang0207@gmail.com"
+        }
+    ],
+    "require": {},
+    "psr-4": {
+            "Manager\\MenuManager\\" : "src/"
+        }
+}
