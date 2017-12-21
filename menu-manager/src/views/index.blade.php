@@ -44,7 +44,7 @@
 									<td>{{ $menu->name }}</td>
 									<td>
 										<a href="{{ route('menu_manager.editMenu', ['menu_item_id'=>$menu->id]) }}" class="btn btn-warning btn-xs">Edit Item</a>
-										<a href="#" class="btn btn-danger btn-xs">Remove</a>
+										<a href="#" class="btn btn-danger btn-xs btn-remove" onclick="showModalDelete('{{ route('menu_manager.removeMenu', ['id'=>$menu->id]) }}'); return false;">Remove</a>
 									</td>
 								</tr>
 								@endforeach
@@ -59,5 +59,27 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
+	function showModalDelete(url) {
+		$('#link-delete').attr('href', url);
+		$('#modal-delete').modal('show');
+	}
 
+	$('#link-delete').on('click', function() {
+		var url = $(this).attr('href');
+
+		$.ajax({
+			url : url,
+			type : 'POST'
+		}).done(function(status) {
+			if (status == 1) {
+				toastr.success('Remove item success');
+			} else {
+				toastr.error('Remove item error');
+			}
+
+			window.location.reload();
+		});
+	});
+</script>
 @endsection

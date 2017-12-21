@@ -247,6 +247,7 @@ p { margin-top:0; font-size:0.97em; }
 
 			var span = $('<span>', {
 				text : item.name,
+				class : 'item_name'
 			}).appendTo(div);
 
 			if (item.status == 0) {
@@ -297,11 +298,11 @@ p { margin-top:0; font-size:0.97em; }
 			type : 'POST'
 		}).done(function(item) {
 			//Rename Name of menu item
-			var div = $('#'+item.id).find('div');
-			div.find('i').remove();
-			div.find('span').text(item.name);
+			$('#item_name_'+item.id).find('i').remove();
+			$('#item_name_'+item.id).text(item.name);
+
 			if (item.status == 0) {
-				$('<i>', {text:' (Hidden)'}).appendTo(div.find('span'));
+				$('<i>', {text:' (Hidden)'}).appendTo($('#item_name_'+item.id));
 			}
 			$('#modal-edit').modal('hide');
 		});

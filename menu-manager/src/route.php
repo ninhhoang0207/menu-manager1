@@ -5,6 +5,7 @@ Route::group(['prefix'=>'menu-manager', 'middleware'=> config('menu-manager.midd
 	Route::get('create', 'Manager\MenuManager\MenuManagerController@create')->name('menu_manager.create');
 	Route::post('create', 'Manager\MenuManager\MenuManagerController@store');
 	Route::get('edit-menu/{id}', 'Manager\MenuManager\MenuManagerController@edit')->name('menu_manager.editMenu');
+	Route::post('remove-menu/{id}', 'Manager\MenuManager\MenuManagerController@remove')->name('menu_manager.removeMenu');
 	Route::get('create-item/{id}', 'Manager\MenuManager\MenuManagerController@createItem')->name('menu_manager.createItem');
 	Route::post('create-item/{id}', 'Manager\MenuManager\MenuManagerController@storeItem');
 	Route::get('render-menu', 'Manager\MenuManager\MenuManagerController@render')->name('menu_manager.render');
