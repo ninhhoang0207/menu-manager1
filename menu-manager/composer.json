@@ -8,7 +8,7 @@
         }
     ],
     "require": {},
-    "homepage": "https://github.com/lavary/laravel-menu",
+    "homepage": "https://github.com/ninhhoang0207/menu-manager",
     "psr-4": {
             "Manager\\MenuManager\\" : "src/"
         },
