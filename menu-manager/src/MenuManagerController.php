@@ -103,7 +103,7 @@ class MenuManagerController extends Controller {
 
     public function createMenuItem(Request $request) {
     	$menuItem = new MenuItem;
-    	$menuItem->menu_id = 1;
+    	$menuItem->menu_id = $request->menu_id;
     	$menuItem->name = $request->name;
     	$menuItem->status = $request->status;
     	$menuItem->order = 999;

@@ -83,6 +83,7 @@ p { margin-top:0; font-size:0.97em; }
 				<h4 class="modal-title">Create</h4>
 			</div>
 			<form id="form-create-menu-item">
+				<input type="hidden" name="menu_id" value="{{ $menu->id }}">
 				<div class="modal-body">
 					<div class="row">
 						<div class="form-group">
