@@ -10,13 +10,13 @@
 
 	<title>@yield('title')| Laravel</title>
 	<!-- Bootstrap library-->
-	<link href="/vendor/menu-manager/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/packages/menu-manager/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Font-awsome -->
-	<link href="/vendor/menu-manager/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/packages/menu-manager/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Toastr -->
-	<link href="/vendor/menu-manager/css/toastr.min.css" rel="stylesheet">
+	<link href="/packages/menu-manager/css/toastr.min.css" rel="stylesheet">
 	<!-- Custom Theme Style -->
-	<link href="/vendor/menu-manager/build/css/custom.css" rel="stylesheet">
+	<link href="/packages/menu-manager/build/css/custom.css" rel="stylesheet">
 	@yield('header')
 </head>
 <body class="nav">
@@ -51,13 +51,13 @@
 	</div>
 </body>
 <!-- jQuery -->
-<script src="/vendor/menu-manager/js/jquery.min.js"></script>
+<script src="/packages/menu-manager/js/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="/vendor/menu-manager/js/bootstrap.min.js"></script>
+<script src="/packages/menu-manager/js/bootstrap.min.js"></script>
 <!-- Toastr -->
-<script type="text/javascript" src="/vendor/menu-manager/js/toastr.min.js"></script>
+<script type="text/javascript" src="/packages/menu-manager/js/toastr.min.js"></script>
 <!-- Custom Theme Scripts -->
-<script src="/vendor/menu-manager/build/js/custom.min.js"></script>
+<script src="/packages/menu-manager/build/js/custom.min.js"></script>
 
 <script type="text/javascript">
 	$.ajaxSetup({

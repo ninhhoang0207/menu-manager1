@@ -8,16 +8,17 @@ class MenuManagerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__.'/views', 'menu-view');
-        if (! $this->app->routesAreCached()) {
-            require __DIR__.'/route.php';
-        }
+
+        $this->publishes([
+            __DIR__.'/views' => base_path('resources/views/menu-manager')
+        ], 'views');
 
         $this->publishes([
             __DIR__.'/config' => base_path('config'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/public' => public_path('vendor/menu-manager'),
+            __DIR__.'/public' => public_path('packages/menu-manager'),
         ], 'public');
 
         $this->publishes([
@@ -27,6 +28,7 @@ class MenuManagerServiceProvider extends ServiceProvider
     
     public function register()
     {
-        
+        include __DIR__.'/route.php';
+        $this->app->make('Manager\MenuManager\MenuManagerController');
     }
 }

@@ -28,7 +28,7 @@ class MenuManagerController extends Controller {
 
     public function store(Request $request) {
         try {
-            $request->validate(['name'=>'unique:menus']);
+            $request->validate(['name'=>'unique:menus|required']);
             $menu = new Menu;
             $menu->name = $request->name;
             $menu->slug = str_slug($request->name);
@@ -42,13 +42,34 @@ class MenuManagerController extends Controller {
         return Redirect::route('menu_manager');
     }
 
+    public function edit($menu_id) {
+        $menu = Menu::findOrFail($menu_id);
+
+        return view('menu-view::edit_menu', compact(['menu']));
+    }
+
+    public function update(Request $request, $menu_id) {
+        $request->validate(['name'  =>  'required']);
+        $menu = Menu::findOrFail($menu_id);
+        if ($menu->name != $request->name) {
+            $request->validate(['name'  =>  'unique:menus']);
+        }
+
+        $menu->name = $request->name;
+        $menu->save();
+
+        Session::flash('success', 'Update menu successful');
+
+        return Redirect::route('menu_manager');
+    }
+
     //Edit Menu's element
-    public function edit($menu_item_id) {
+    public function editMenuItem($menu_item_id) {
         $menu = Menu::where('id', $menu_item_id)->firstOrFail();
         $menuItems = MenuItem::where('menu_id', $menu->id)->where('parent_id', 0)->orderBy('order', 'asc')->get();
         $html = (string)$this->render2($menuItems, '');
 
-        return view('menu-view::edit', compact(['html', 'menu']));
+        return view('menu-view::edit_menu_item', compact(['html', 'menu']));
     }
 
     public function remove($id) {
@@ -93,7 +114,7 @@ class MenuManagerController extends Controller {
 
     public function getMenu($keyword) {
         $menu = Menu::where('name', $keyword)->firstOrFail();
-        $menuItems = MenuItem::where('menu_id', $menu->id)->where('parent_id', 0)->get();
+        $menuItems = MenuItem::where('menu_id', $menu->id)->orderBy('order', 'asc')->where('parent_id', 0)->get();
         $html = (string)$this->render($menuItems);
 
         echo (string)view('menu-view::menu', compact(['html']));
@@ -120,6 +141,10 @@ class MenuManagerController extends Controller {
     }
 
     public function createMenuItem(Request $request) {
+        if (!$request->name) {
+            return 0;
+        }
+
         $menuItem = new MenuItem;
         $menuItem->menu_id = $request->menu_id;
         $menuItem->name = $request->name;
@@ -163,6 +188,10 @@ class MenuManagerController extends Controller {
     }
 
     public function updateMenuItem(Request $request) {
+        if (!$request->name) {
+            return 0;
+        }
+
         $menuItem = MenuItem::find($request->item_id);
         if ($menuItem) {
             $menuItem->name = $request->name;

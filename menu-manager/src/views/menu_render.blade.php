@@ -10,7 +10,7 @@
 	</li>
 	@else
 	<li>
-		<a href="{{ $item->link }}">{!! $item->name !!}</a>
+		<a href="/{{ $item->link }}">{!! $item->name !!}</a>
 	</li>
 	@endif
 @endforeach

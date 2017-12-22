@@ -6,7 +6,11 @@
             "email": "ninhvanhoang0207@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+    	"php": ">=5.4.0",
+        "illuminate/support": ">=5.0",
+        "illuminate/view": ">=5.0"
+    },
     "homepage": "https://github.com/ninhhoang0207/menu-manager",
     "psr-4": {
             "Manager\\MenuManager\\" : "src/"

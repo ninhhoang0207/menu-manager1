@@ -17,7 +17,7 @@
 				<div class="x_panel">
 					<!-- X-title -->
 					<div class="x_title">
-						<h2>Create</h2>
+						<h2>Edit</h2>
 						<div class="clearfix"></div>
 					</div>
 					<!-- X-title -->
@@ -29,21 +29,20 @@
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
-									<input type="text" name="name" id="name" required="required" class="form-control col-md-7 col-xs-12">
+									<input type="text" name="name" id="name" required="required" class="form-control col-md-7 col-xs-12" value="{{ $menu->name }}">
 									@if ($errors->has('name'))
 									<span class="help-block">
 										<strong>{{ $errors->first('name') }}</strong>
 									</span>
 									@endif
 								</div>
-
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-md-3 col-sm-3 col-xs-12"></div>
 							<div class="col-md-6 col-sm-6 col-xs-12 text-center">
 								<a href="{{ route('menu_manager') }}" class="btn btn-default">Back</a>
-								<button class="btn btn-primary" type="submit">Create</button>
+								<button class="btn btn-primary" type="submit">Update</button>
 							</div>
 						</div>
 					</div>

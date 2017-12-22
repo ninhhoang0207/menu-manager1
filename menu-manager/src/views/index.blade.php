@@ -43,7 +43,8 @@
 									<td>{{ $key+1 }}</td>
 									<td>{{ $menu->name }}</td>
 									<td>
-										<a href="{{ route('menu_manager.editMenu', ['menu_item_id'=>$menu->id]) }}" class="btn btn-warning btn-xs">Edit Item</a>
+										<a href="{{ route('menu_manager.editMenu', ['menu_id'=>$menu->id]) }}" class="btn btn-info btn-xs">Edit Menu</a>
+										<a href="{{ route('menu_manager.editMenuItem', ['menu_item_id'=>$menu->id]) }}" class="btn btn-warning btn-xs">Edit Item</a>
 										<a href="#" class="btn btn-danger btn-xs btn-remove" onclick="showModalDelete('{{ route('menu_manager.removeMenu', ['id'=>$menu->id]) }}'); return false;">Remove</a>
 									</td>
 								</tr>

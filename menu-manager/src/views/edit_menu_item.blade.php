@@ -172,7 +172,7 @@ li, ul, div { border-radius: 3px; }
 @endsection
 
 @section('scripts')
-<script src="/vendor/menu-manager/js/jquery-sortable-lists.js"></script>
+<script src="/packages/menu-manager/js/jquery-sortable-lists.js"></script>
 <script type="text/javascript">
 	var options = {
 
@@ -183,7 +183,7 @@ li, ul, div { border-radius: 3px; }
 				data : { items : $('#sTree2').sortableListsToArray() }
 			}).done(function (data) {
 				if (!data) {
-					alert('Error');
+					toastr.error('Oops! Error, please refresh page and try again');
 				} 
 			});
 		},
@@ -228,6 +228,7 @@ li, ul, div { border-radius: 3px; }
 	// $('.sortableLists').sortableLists( options );
 	$('#sTree2').sortableLists( options );
 
+
 	$(document).on('click','#create-menu-item', function(e) {
 		e.preventDefault();
 
@@ -236,6 +237,12 @@ li, ul, div { border-radius: 3px; }
 			data : $('#form-create-menu-item').serialize(),
 			type : 'GET'
 		}).done(function (item) {
+			if (item == 0) {
+				toastr.error('Name cannot be null');
+
+				return false;
+			}
+
 			var li = $('<li>', {
 				id : item.id,
 			}).appendTo($('#sTree2'));
@@ -244,7 +251,8 @@ li, ul, div { border-radius: 3px; }
 
 			var span = $('<span>', {
 				text : item.name,
-				class : 'item_name'
+				class : 'item_name',
+				id : 'item_name_'+item.id
 			}).appendTo(div);
 
 			if (item.status == 0) {
@@ -272,7 +280,6 @@ li, ul, div { border-radius: 3px; }
 		var url = $(this).attr('href');
 		$.ajax({
 			url : url,
-			// data : $('#form-create-menu-item').serialize(),
 			type : 'GET'
 		}).done(function (item) {
 			if (item) {
@@ -282,28 +289,32 @@ li, ul, div { border-radius: 3px; }
 				$('#edit-menu-item-id').val(item.id);
 				$('#modal-edit').modal('show');
 			} else {
-				// alert('Error');
-				toastr.error('Oops! Error, please reload page and try again.');
+				alert('Error');
 			}
 		});
 	});
 
-	$('#update-menu-item').on('click', function(e) {
+	$(document).on('click', '#update-menu-item' ,function(e) {
 		e.preventDefault();
 		$.ajax({
 			url : "{{ route('menu_manager.updateMenuItem') }}",
 			data : $('#form-edit-menu-item').serialize() ,
 			type : 'POST'
 		}).done(function(item) {
-			//Rename Name of menu item
+			if (item == 0) {
+				toastr.error('Name cannot be null');
+
+				return false;
+			}
+
 			$('#item_name_'+item.id).find('i').remove();
 			$('#item_name_'+item.id).text(item.name);
 
 			if (item.status == 0) {
 				$('<i>', {text:' (Hidden)'}).appendTo($('#item_name_'+item.id));
 			}
-			$('#modal-edit').modal('hide');
 		});
+		$('#modal-edit').modal('hide');
 	});
 
 	$(document).on('click', '.remove-menu-item' ,function(e) {
