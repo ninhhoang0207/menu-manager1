@@ -26,7 +26,7 @@ Trong tệp composer.json:
         ],
         "psr-4": {
             ...
-            "Manager\\MenuManager\\" : "vendor/manager/menu-manager/src"
+            "Manager\\MenuManager\\" : "packages/menu-manager/src"
         }
     },
 
