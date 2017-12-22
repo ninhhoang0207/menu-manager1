@@ -1,3 +1,5 @@
+Sao chép thư mục menu-manager vào thư mục packagse của project
+
 Thêm dòng khai báo vào thư mục config/app
 	'providers' => [
 
