@@ -17,7 +17,7 @@
         },
     "autoload": {
         "psr-0": {
-            "Lavary\\Menu\\": "src/"
+            "Manager\\MenuManager\\": "src/"
         }
     },
     "extra": {
