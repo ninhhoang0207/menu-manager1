@@ -117,7 +117,7 @@ class MenuManagerController extends Controller {
         $menuItems = MenuItem::where('menu_id', $menu->id)->orderBy('order', 'asc')->where('parent_id', 0)->get();
         $html = (string)$this->render($menuItems);
 
-        echo (string)view('menu-view::menu', compact(['html']));
+        echo (string)view('menu-manager.menu', compact(['html']));
     }
 
     public function render($menuItems) {

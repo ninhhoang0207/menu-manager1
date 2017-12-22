@@ -10,7 +10,7 @@ class MenuManagerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/views', 'menu-view');
 
         $this->publishes([
-            __DIR__.'/views' => base_path('resources/views/menu-manager')
+            __DIR__.'/views/menu' => base_path('resources/views/menu-manager')
         ], 'views');
 
         $this->publishes([
